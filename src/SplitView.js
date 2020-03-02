@@ -2,14 +2,17 @@ import React from "react";
 import styled from "styled-components";
 import { Component } from "react";
 import SplitPane from "react-split-pane";
-import "./App.css"
+import './App.css'
+import './card.js'
+import webcam from "./webcam.js";
+import CenteredTabs from "./card";
 
 const Wrapper = styled.div`
   .Pane1 {
-    background-color:#00FFFF;
+    background-color:#FFF;
   }
   .Pane2 {
-    background-color:#03bb85;
+    background-color:#FFF;
   }
 `;
 
@@ -31,29 +34,13 @@ class SplitView extends Component {
             <img src="splash.png" alt="Afour Technologies" ></img>
           </div>
           <Wrapper>
-        <SplitPane split="vertical" defaultSize="50%" class="Down">
-          <div class="Left">
-            <p>You clicked {this.state.rightcount} times</p>
-            <button
-              onClick={() =>
-                this.setState({ rightcount: this.state.rightcount + 1 })
-              }
-            >
-              Click me
-            </button>
-          </div>
+        
+            <div class="div">
+        
+            <CenteredTabs/>
 
-          <div class="Right">
-            <p>You clicked {this.state.rightcount} times</p>
-            <button
-              onClick={() =>
-                this.setState({ rightcount: this.state.rightcount + 1 })
-              }
-            >
-              Click me
-            </button>
-          </div>
-          </SplitPane>
+            </div>
+            <div><webcam/></div>
           </Wrapper>
         </SplitPane>
      
