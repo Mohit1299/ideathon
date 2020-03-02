@@ -14,11 +14,12 @@ const useStyles = makeStyles(theme => ({
 export default function BasicTextFields() {
   const classes = useStyles();
 
+  const [value, setValue] = React.useState();
+
   return (
     <form className={classes.root} noValidate autoComplete="off">
-      <TextField id="standard-basic" label="Standard" />
-      <TextField id="filled-basic" label="Filled" variant="filled" />
-      <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+      <TextField placeholder="Enter your Name" id="outlined-name" label="Name" variant="outlined" />
+      <TextField placeholder="Enter phone number" id="outlined-phone" label="Phone" value={value} onChange={setValue} variant="outlined" type="Number"/>
     </form>
   );
 }
