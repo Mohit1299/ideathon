@@ -4,7 +4,6 @@ import { Component } from "react";
 import SplitPane from "react-split-pane";
 import './App.css'
 import './card.js'
-import webcam from "./webcam.js";
 import CenteredTabs from "./card";
 
 const Wrapper = styled.div`
@@ -40,7 +39,7 @@ class SplitView extends Component {
             <CenteredTabs/>
 
             </div>
-            <div><webcam/></div>
+          
           </Wrapper>
         </SplitPane>
      

@@ -8,6 +8,8 @@ import SwipeableViews from 'react-swipeable-views';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import PropTypes from 'prop-types';
+import SplitButton from './Expansion';
+import { blue } from '@material-ui/core/colors';
 
 
 function TabPanel(props) {
@@ -37,6 +39,7 @@ TabPanel.propTypes = {
 const useStyles = makeStyles({
   root: {
     flexGrow: 1,
+    backgroundColor: blue,
   },
 });
 
@@ -67,7 +70,7 @@ export default function CenteredTabs() {
       <Tabs
         value={value}
         onChange={handleChange}
-        indicatorColor="primary"
+        indicatorColor="blue"
         textColor="primary"
         centered
         variant = "fullWidth"
@@ -85,6 +88,7 @@ export default function CenteredTabs() {
         <BasicTextFields/>
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
+          <SplitButton/>       
           <BasicTextFields/>
         </TabPanel>
         
