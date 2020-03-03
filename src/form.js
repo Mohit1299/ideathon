@@ -29,14 +29,9 @@ export default function BasicTextFields(props) {
 
   return (
     <div className={classes.form} >
-      <canvas height="0" width="0"></canvas>
-      <br></br>
       <img id="photo" src="identity.jpg" alt="Man"></img>
       <br></br>
-      <div className="booth"><video id="video" height="100" width="100"></video></div>
-      <br></br>
       <Button id = "capture" variant="contained" color="primary">Take Photo</Button>
-      <script src="webcam.js"></script>
       <br></br>
       <TextField placeholder="Enter your Name" id="outlined-name" label="Name" variant="outlined" />
       <br></br>
@@ -55,6 +50,9 @@ export default function BasicTextFields(props) {
         inputProps={{ 'aria-label': 'secondary checkbox' }}/>  
       </p>
       {state.checkedA === true ? <TextField placeholder="Mention Electronics" id="outlined-phone" label="Electronics" value={value} onChange={setValue} variant="outlined"/> : ''}
+      <br></br>
+      <Button id = "capture" variant="contained" color="primary">Submit</Button>
+      <br></br>
     </div>
   );
 }

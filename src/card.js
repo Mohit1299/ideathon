@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
 import SplitButton from './Expansion';
 import { blue } from '@material-ui/core/colors';
 import './App.css'
+import { Button } from '@material-ui/core';
 
 
 function TabPanel(props) {
@@ -99,9 +100,16 @@ export default function CenteredTabs() {
         <TabPanel value={value} index={1} dir={theme.direction}>
           <SplitButton buttonVal={buttonValue} setButtonVal={(val) => setButtonValue(val)}/>       
           {/* <BasicTextFields/> */}
-          {buttonValue === 0 ? (<div>Visitor Form</div>) : ''}
-          {buttonValue === 1 ? (<div>Vendor Form</div>) : ''}
-          {buttonValue === 2 ? (<div>Delivery Form</div>) : ''}
+          {buttonValue === 0 ? (<div><br></br><Button variant="outlined" color="primary" >
+        Visitor Form
+      </Button><BasicTextFields/> </div>) : ''}
+      {buttonValue === 1 ? (<div><br></br><Button variant="outlined" color="primary">
+        Vendor Form
+      </Button><BasicTextFields/> </div>) : ''}
+      {buttonValue === 2 ? (<div><br></br><Button variant="outlined" color="primary">
+        Delivery Form
+      </Button><BasicTextFields/> </div>) : ''}
+         
         </TabPanel>
         
       </SwipeableViews>
