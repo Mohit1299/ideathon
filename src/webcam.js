@@ -1,29 +1,28 @@
-import React, { Component } from 'react';
-import Webcam from 'react-webcam';
+(function() {
+    var video = document.getElementById('video'),
+        canvas = document.getElementById('canvas'),
+        context = canvas.getContext('2d'),
+        photo = document.getElementById('photo'),
+        vendorUrl = window.URL || window.webkitURL;
 
-export default class FaceEmotion extends Component{
+    navigator.getMedia = navigator.getUserMedia ||
+                         navigator.webkitGetUserMedia ||
+                         navigator.mozGetUserMedia ||
+                         navigator.mozGetUserMedia;
 
-    constructor(props){
-        super(props);
-        this.state = { screenshot: null }
-         this.screenshot = this.screenshot.bind(this);
 
-    }
-  
-    screenshot() {
-        
-        var screenshot = this.refs.webcam.getScreenshot();
-        this.setState({screenshot: screenshot});
-      }
+    navigator.getMedia({
+        video : true,
+        audio : false
+    }, function(stream) {
+        video.src = vendorUrl.createObjectURL(stream);
+        video.play();
+    }, function(error){
+        //An error code
+    });
 
-    render(){
-
-        return (
-            <div>   
-             <Webcam audio ={false} ref='webcam' height="100px" width="100px"/>
-             <button onClick={this.screenshot.bind(this)}>Capture</button>
-             { this.state.screenshot ? <img src={this.state.screenshot} alt="Not Captured"/> : null }
-            </div>
-            )
-    }
-}
+    document.getElementById('capture').addEventListener('click',function(){
+            context.drawImage(video,0,0,100,100);
+            photo.setAttribute('src',canvas.toDataUrl('image/png'));
+    });
+})();

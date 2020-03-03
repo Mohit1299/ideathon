@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { makeStyles,useTheme } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
@@ -10,6 +10,7 @@ import Box from '@material-ui/core/Box';
 import PropTypes from 'prop-types';
 import SplitButton from './Expansion';
 import { blue } from '@material-ui/core/colors';
+import './App.css'
 
 
 function TabPanel(props) {
@@ -56,6 +57,7 @@ export default function CenteredTabs() {
     const theme = useTheme();
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
+    const [buttonValue, setButtonValue] = useState(0);
   
     const handleChange = (event, newValue) => {
       setValue(newValue);
@@ -64,6 +66,10 @@ export default function CenteredTabs() {
     const handleChangeIndex = index => {
       setValue(index);
     };
+
+    // const handleInterview = () => {
+    //   <BasicTextFields/>
+    // }
   
   return (
     <Paper className={classes.root}>
@@ -75,21 +81,27 @@ export default function CenteredTabs() {
         centered
         variant = "fullWidth"
       >
-        <Tab label="Interview" {...a11yProps(0)}/>
+        <Tab label="Interview" {...a11yProps(0)} />
         <Tab label="Others" {...a11yProps(1)}/>
       </Tabs>
 
       <SwipeableViews
-    axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+    axis={theme.direction === 'rtl' ? 'y-reverse' : 'x'}
     index={value}
     onChangeIndex={handleChangeIndex}
   >
+    
       <TabPanel value={value} index={0} dir={theme.direction}>
-        <BasicTextFields/>
+      
+       <div className="forms"><BasicTextFields /></div>
+       
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-          <SplitButton/>       
-          <BasicTextFields/>
+          <SplitButton buttonVal={buttonValue} setButtonVal={(val) => setButtonValue(val)}/>       
+          {/* <BasicTextFields/> */}
+          {buttonValue === 0 ? (<div>Visitor Form</div>) : ''}
+          {buttonValue === 1 ? (<div>Vendor Form</div>) : ''}
+          {buttonValue === 2 ? (<div>Delivery Form</div>) : ''}
         </TabPanel>
         
       </SwipeableViews>

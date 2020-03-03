@@ -38,6 +38,7 @@
 }
 
 .UpperImage{
+  text-align: center;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -45,10 +46,29 @@
   margin-bottom: auto;
 }
 
-.root {
-  margin-top: auto;
-  margin-left: auto;
-  margin-bottom: auto;
-  margin-right: auto;
+.forms {
+  overflow-y: auto;
+  overflow-x: hidden;
+  display:block;
+  height: 480px;
 }
 
+.example::-webkit-scrollbar {
+  display:-webkit-box;
+}
+
+.booth{
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom:auto ;
+  margin-top: auto;
+  width: 100px;
+  background-color: burlywood;
+  border: 10px solid seashell;
+  margin:0 auto;
+}
+
+#canvas {
+  display: none;
+}

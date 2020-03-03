@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Component } from "react";
-import SplitPane from "react-split-pane";
+// import SplitPane from "react-split-pane";
 import './App.css'
 import './card.js'
 import CenteredTabs from "./card";
@@ -27,22 +27,22 @@ class SplitView extends Component {
 
   render() {
     return (
-      
-        <SplitPane split="horizontal" defaultSize="40%">
-          <div class="UpperImage">
+      <div class="UpperImage">
+        {/* <SplitPane split="horizontal" defaultSize="40%" class="div">  */}
+          <div className="UpperImage">
             <img src="splash.png" alt="Afour Technologies" ></img>
           </div>
           <Wrapper>
         
-            <div class="div">
+            <div>
         
             <CenteredTabs/>
 
             </div>
           
           </Wrapper>
-        </SplitPane>
-     
+        {/* </SplitPane> */}
+        </div>
     );
   }
 }

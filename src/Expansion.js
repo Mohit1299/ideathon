@@ -12,10 +12,10 @@ import MenuList from '@material-ui/core/MenuList';
 
 const options = ['Visitor','Vendor','Delivery'];
 
-export default function SplitButton() {
+export default function SplitButton({buttonVal, setButtonVal}) {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
-  const [selectedIndex, setSelectedIndex] = React.useState(1);
+  const [selectedIndex, setSelectedIndex] = React.useState(buttonVal);
 
   const handleClick = () => {
     console.info(`You clicked ${options[selectedIndex]}`);
@@ -23,6 +23,7 @@ export default function SplitButton() {
 
   const handleMenuItemClick = (event, index) => {
     setSelectedIndex(index);
+    setButtonVal(index);
     setOpen(false);
   };
 
