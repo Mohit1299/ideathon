@@ -67,3 +67,8 @@
   margin:0 auto;
 }
 
+.center {
+  display: inline-block;
+  justify-items: center;
+  align-self: center;
+}

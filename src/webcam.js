@@ -1,28 +1,31 @@
-(function() {
-    var video = document.getElementById('video'),
-        canvas = document.getElementById('canvas'),
-        context = canvas.getContext('2d'),
-        photo = document.getElementById('photo'),
-        vendorUrl = window.URL || window.webkitURL;
+import React, { useState } from 'react';
+import { Camera } from 'react-html5-camera-photo';
+import ImagePreview from './ImagePreview';
+import 'react-html5-camera-photo/build/css/index.css';
 
-    navigator.getMedia = navigator.getUserMedia ||
-                         navigator.webkitGetUserMedia ||
-                         navigator.mozGetUserMedia ||
-                         navigator.mozGetUserMedia;
+function Photo (props) {
+  const [dataUri, setDataUri] = useState('');
 
+  function handleTakePhotoAnimationDone (dataUri) {
+    console.log('takePhoto');
+    console.log(dataUri);
+    setDataUri(dataUri);
+  }
 
-    navigator.getMedia({
-        video : true,
-        audio : false
-    }, function(stream) {
-        video.src = vendorUrl.createObjectURL(stream);
-        video.play();
-    }, function(error){
-        //An error code
-    });
+  const isFullscreen = false;
+  return (
+    <div>
+      {
+        (dataUri)
+          ? <ImagePreview dataUri={dataUri}
+            isFullscreen={isFullscreen}
+          />
+          : <Camera onTakePhotoAnimationDone = {handleTakePhotoAnimationDone}
+            isFullscreen={isFullscreen}
+          />
+      }
+    </div>
+  );
+}
 
-    document.getElementById('capture').addEventListener('click',function(){
-            context.drawImage(video,0,0,100,100);
-            photo.setAttribute('src',canvas.toDataUrl('image/png'));
-    });
-})();
+export default Photo;
