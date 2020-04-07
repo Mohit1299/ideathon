@@ -1,35 +1,56 @@
-import React from "react";
+import React,{useState} from "react";
 import { AiFillMinusCircle, AiFillPlusCircle } from 'react-icons/ai';
+//import { Button } from "react-bootstrap";
 
-class Form2 extends React.Component {
-  state = {
-    rows: [{}]
-  };
-  handleChange = idx => e => {
+function Form2(props){
+  // state = {
+  //   rows: [{}]
+  // };
+
+  const [Rows,setRows] = useState([{}]);
+// useEffect(() => {
+//   console.log('rows', Rows)
+// },[Rows])
+  
+  const handleDeviceChange = idx => e => {
     const { name, value } = e.target;
-    const rows = [...this.state.rows];
+    const rows = [Rows];
     rows[idx] = {
       [name]: value
     };
-    this.setState({
-      rows
-    });
+    setRows(rows);
+    
   };
-  handleAddRow = () => {
+  
+  const handleDetailsChange = idx => e => {
+    const { name, value } = e.target;
+    const rows = [Rows];
+    rows[idx] = {
+      [name]: value
+    };
+    setRows(rows);
+    
+  };
+  
+  const handleAddRow = () => {
     const item = {
       Device: "",
       Details: ""
     };
-    this.setState({
-      rows: [...this.state.rows, item]
-    });
+
+    setRows([...Rows,item]);
   };
-  handleRemoveSpecificRow = (idx) => () => {
-    const rows = [...this.state.rows]
-    rows.splice(idx, 1)
-    this.setState({ rows })
+  
+  const handleRemoveSpecificRow = (idx) => () => {
+    //const rows = [Rows]
+    Rows.splice(idx, 1)
+    setRows([...Rows]);
   }
-  render() {
+ 
+  // const handleSubmit = e => {
+  //   e.preventDefault();
+  //   console.log(Rows);
+  // }
     return (
       <div>
         <div className="container">
@@ -48,24 +69,24 @@ class Form2 extends React.Component {
                   </tr>
                 </thead>
                 <tbody>
-                  {this.state.rows.map((item, idx) => (
+                  {Rows.map((item, idx) => (
                     <tr id="addr0" key={idx}>
                       <td>{idx + 1}</td>
                       <td>
                         <input
                           type="text"
-                          name="name"
-                          value={this.state.rows[idx].Device}
-                          onChange={this.handleChange(idx)}
+                          name="Device"
+                          value={Rows[idx].Device}
+                          onChange={handleDeviceChange(idx)}
                           className="form-control"
                         />
                       </td>
                       <td>
                         <textarea
                           type="text"
-                          name="mobile"
-                          value={this.state.rows[idx].Details}
-                          onChange={this.handleChange(idx)}
+                          name="Details"
+                          value={Rows[idx].Details}
+                          onChange={handleDetailsChange(idx)}
                           className="form-control"
                         />
                       </td>
@@ -73,7 +94,7 @@ class Form2 extends React.Component {
                         <button
                           type="button"
                           className="btn btn-danger "
-                          onClick={this.handleRemoveSpecificRow(idx)}
+                          onClick={handleRemoveSpecificRow(idx)}
                         >
                           <AiFillMinusCircle/>
                         </button>
@@ -81,7 +102,8 @@ class Form2 extends React.Component {
                         <button 
                           type="button" 
                           className="btn btn-success"
-                          onClick={this.handleAddRow}
+                          onClick={() => handleAddRow()}
+                          onClickCapture={console.log(idx)}
                         >
                           <AiFillPlusCircle/>
                         </button>
@@ -91,12 +113,12 @@ class Form2 extends React.Component {
                 </tbody>
               </table>
               
+              {/* <Button onClick={handleSubmit}>Submit</Button> */}
             </div>
           </div>
         </div>
       </div>
     );
   }
-}
 
 export default Form2;

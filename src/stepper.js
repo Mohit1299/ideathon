@@ -5,9 +5,10 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import CenteredTabs from './card';
-import BasicTextFields2 from './form2.js'
-import Photo from './webcam'
+//import CenteredTabs from './card';
+import Photo from './webcam';
+import Form2 from "./form2.js"
+import MasterForm from './master';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -29,9 +30,9 @@ function getSteps() {
 function getStepContent(stepIndex) {
   switch (stepIndex) {
     case 0:
-      return <CenteredTabs/>;
+      return <MasterForm></MasterForm>;
     case 1:
-      return <BasicTextFields2></BasicTextFields2>;
+      return <Form2></Form2>;
     case 2:
       return <Photo></Photo>;
     default:

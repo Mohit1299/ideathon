@@ -1,41 +1,30 @@
 import React from "react";
-import { Component } from "react";
 import './App.css'
-import './card.js'
-import HorizontalLabelPositionBelowStepper from "./stepper";
+import MasterForm from "./master";
 
 
-class SplitView extends Component {
-  constructor() {
-    super();
+function SplitView(props) {
 
-    this.state = {
-      leftcount: 0,
-      rightcount: 0
-    };
-  }
 
-  render() {
+  
     return (
-      <div class="UpperImage">
-        
+
+      
+      <div className="UpperImage" >
+        {/* style={{width:'100%',borderRight: '3px solid black',  borderLeft: '3px solid black'}}>
+           */}
+         
           <div className="UpperImage">
             <img src="splash.png" alt="Afour Technologies" ></img>
           </div>
-          
-        
-            
-        
+          <div>
             <br></br>
-            <HorizontalLabelPositionBelowStepper></HorizontalLabelPositionBelowStepper>
+            <MasterForm></MasterForm>
+            <br></br>
+            </div>
             
-
-          
-          
-        
-        
         </div>
+        
     );
   }
-}
 export default SplitView;

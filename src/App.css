@@ -72,3 +72,18 @@
   justify-items: center;
   align-self: center;
 }
+
+h2 {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #000;
+  line-height: 0.1em;
+  margin: auto 0;
+}
+h2 span {
+  width: 100%;
+  text-align: center;
+  background: #fff;
+  padding: 0 10px;
+}
